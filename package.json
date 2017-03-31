@@ -1,0 +1,22 @@
+{
+  "name": "bank-ocr",
+  "version": "1.0.0",
+  "description": "TestDouble Kata",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --harmony test/spec.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Luke Albao",
+    "email": "lukealbao@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.18.0",
+    "mocha": "^3.2.0",
+    "sinon": "^2.1.0",
+    "split2": "^2.1.1"
+  }
+}
