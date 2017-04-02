@@ -50,7 +50,7 @@ function parseLine (lines) {
   var accountNumber = [];
 
   assert(lines.length === 3, 'need 3 lines for an account');
-  lines.forEach(line => assert(line.length === 27, 'line length'));
+  lines.forEach(line => assert(line.length === 27, `line length: ${line.length}`));
 
   for(var i = 0; i < lines[0].length; i += 3) {
     var character = '';

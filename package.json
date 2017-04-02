@@ -1,8 +1,15 @@
 {
-  "name": "bank-ocr",
+  "name": "kata-ocr",
   "version": "1.0.0",
   "description": "TestDouble Kata",
   "main": "index.js",
+  "bin": {
+    "kataocr": "./bin/validate-file.js"
+  },
+  "engines": {
+    "node": ">= 4.0.x",
+    "npm": ">= 1.4.x"
+  },
   "scripts": {
     "test": "mocha --harmony test/spec.js"
   },
@@ -16,7 +23,10 @@
     "chai": "^3.5.0",
     "eslint": "^3.18.0",
     "mocha": "^3.2.0",
-    "sinon": "^2.1.0",
-    "split2": "^2.1.1"
+    "sinon": "^2.1.0"
+  },
+  "dependencies": {
+    "split2": "^2.1.1",
+    "yargs": "^7.0.2"
   }
 }
