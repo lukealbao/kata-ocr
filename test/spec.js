@@ -57,3 +57,17 @@ describe('accountNumberFromLine (Array(String)) -> String', function () {
     });
   });
 });
+
+describe('validateAccount (Array(String)) -> String', function () {
+  testCases[3].forEach(test => {
+    it(`Validates account #${test.expectation}`, function () {
+      const accountNumber = app.accountNumberFromLine(test.line);
+      expect(app.validateAccount(accountNumber)).to.equal(test.expectation);
+    });
+  });
+
+  it('Validates account #664371495 ERR', function () {
+    // Taken from Kata test case. Cf checksum test case above.
+    expect(app.validateAccount('664371495')).to.equal('664371495 ERR');
+  });
+});
