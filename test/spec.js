@@ -8,6 +8,20 @@ const path = require('path');
 const testCases = require(path.resolve(__dirname, 'cases'));
 const app = require(path.resolve(__dirname, '..', 'index'));
 
+describe('checksum (Number) -> Boolean', function () {
+  // From http://codingdojo.org/kata/BankOCR/
+  // OK: 457508000
+  // Error: 664371495
+
+  it('Approves account 457508000', function () {
+    expect(app.checksum('457508000')).to.equal(true);
+  });
+
+  it('Rejects account 664371495', function () {
+    expect(app.checksum('664371495')).to.equal(false);
+  });
+});
+
 describe('parseLine (Array(String)) -> Array(String)', function () {
   testCases[1].forEach(test => {
     it(`Returns a 9-element array of 9-character strings for ${test.expectation}`,

@@ -65,6 +65,29 @@ function parseLine (lines) {
   return accountNumber;
 }
 
+// checksum :: (Number) -> Boolean
+//
+// Spec:
+// account number:  3  4  5  8  8  2  8  6  5
+// position names: d9 d8 d7 d6 d5 d4 d3 d2 d1
+//
+// checksum calculation: (d1+2*d2+3*d3 +..+9*d9) mod 11 = 0
+function checksum (accountNumber) {
+  let digits = String(accountNumber).split('').map(Number);
+
+  let sum = digits.reduce((a, b, index) => {
+    // Invariant: Length of an array is always 1 more than the
+    // index of the last element. So we can be sure the last
+    // =b= that is evaluated is 1. Likewise, by using an initial
+    // value of 0, the first element is evaluated as =b= when
+    // index is 0, and thus the invariant is digits.length.
+    const reverseIndex = digits.length - (index);
+
+    return a + (b * reverseIndex);
+  }, 0);
+
+  return sum % 11 === 0;
+}
 
 // ------------------------------------------------------------
 // --                      Public API                        --
@@ -85,6 +108,9 @@ function accountNumberFromLine (line) {
     }, '');
 }
 
+
+
 module.exports.parseLine = parseLine;
 module.exports.accountNumberFromLine = accountNumberFromLine;
 module.exports.mapCharacter = mapCharacter;
+module.exports.checksum = checksum;
